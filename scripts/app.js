@@ -1,6 +1,8 @@
 let controller;
 let slideScene;
 let pageScene;
+let cursor = document.querySelector(".cursor");
+
 function animateScroll() {
 
     /*Initialise*/
@@ -27,7 +29,7 @@ function animateScroll() {
 
         slideT1.fromTo(revealImg, {x: "0%"}, {x: "100%"});
         slideT1.fromTo(img, {scale: 2}, {scale: 1}, "-=1");
-        slideT1.fromTo(revealText, {x: "0%"}, {x: "100%"}, "-=0.75");
+        slideT1.fromTo(revealText, {x: "0%", scale: "1"}, {x: "100%", scale: "0.3"}, "-=0.75");
         slideT1.fromTo(navBar, {y: "-100%"}, {y:"0%"}, "-=0.5");
 
         /*add scene*/ 
@@ -59,8 +61,34 @@ function animateScroll() {
         .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'page', indent: 200})
         .addTo(controller);
 
-
     })
 }
+
+/*cursor animation*/ 
+
+function cursorAnimation(e){
+    cursor.style.left = e.pageX + "px";
+    cursor.style.top = e.pageY + "px";
+}
+
+function activeAnimation(e){
+    const item = e.target;
+    console.log(item.id)
+    if(item.id === "logo" || item.classList.contains("burger")) cursor.classList.add("active-nav");
+    else cursor.classList.remove("active-nav");
+
+    if(item.classList.contains("explore")) {
+        cursor.classList.add("active-explore");
+        gsap.to(".title-swipe",1,{y:"0%"});
+    }
+    else {
+        cursor.classList.remove("active-explore");
+        gsap.to(".title-swipe",1,{y:"100%"});
+    }
+    
+}
+
+document.addEventListener('mousemove',cursorAnimation);
+document.addEventListener('mouseover',activeAnimation);
 
 animateScroll();
