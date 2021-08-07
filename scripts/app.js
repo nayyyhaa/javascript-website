@@ -91,16 +91,20 @@ function activeAnimation(e) {
 function animateBurger(e) {
     if(!e.target.classList.contains("active")) {
         e.target.classList.add("active");
+        document.body.classList.add("hide");
         gsap.to(".line1", 0.5, {rotate: "45", y: 5, background: "black"});
         gsap.to(".line2", 0.5, {rotate: "-45", y: -5, background: "black"});
         gsap.to("#logo", 0.5, {color: "black"});
         gsap.to(".nav-bar", 0.5, {clipPath: "circle(2500px at 100% -10%)"});
+        gsap.to(".cursor", 0.5, {border: "1px solid black"});
     } else {
         e.target.classList.remove("active");
+        document.body.classList.remove("hide");
         gsap.to(".line1", 0.5, {rotate: "0", y: 0, background: "white"});
         gsap.to(".line2", 0.5, {rotate: "0", y: 0, background: "white"});
         gsap.to("#logo", 0.5, {color: "white"});
         gsap.to(".nav-bar", 0.5, {clipPath: "circle(2rem at 100% -10%)"});
+        gsap.to(".cursor", 0.5, {border: "1px solid white"});
     }
 }
 

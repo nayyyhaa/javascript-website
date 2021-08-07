@@ -120,13 +120,13 @@ body {
     font-size: 1.5rem;
     color: rgb(223, 223, 223);
 }
-.fashion-span {
+.fashion-span, .text1 h1 {
     color: rgb(255, 139, 93);
 }
-.mountain-span {
+.mountain-span, .text2 h1 {
     color: rgb(86, 124, 228);
 }
-.hike-span {
+.hike-span, .text3 h1 {
     color: rgb(167, 110, 231);
 }
 .explore {
@@ -172,7 +172,7 @@ body {
     position: absolute;
     transform: translate(-50%,-50%);
     pointer-events: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     transition-property: transform, background;
     transform-origin: 75% 75%;
 }
@@ -215,6 +215,53 @@ body {
     transform: translateY(100%);
 }
 
+.hide {
+    overflow: hidden;
+}
+
 /* .scrollmagic-pin-spacer {
     position: static !important;
 } */
+
+/*********** PAGES **********/
+
+/* Fashion Page */
+
+.fashion-slide1,
+.fashion-slide2,
+.fashion-slide3 {
+    position: relative;
+    min-height: 90vh;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 3rem auto 0;
+}
+
+.fashion-img img{
+    height: 80vh;
+    flex-basis: 30rem;
+}
+
+.fashion-text {
+    flex: 1;
+    position: relative;
+    flex-basis: 25rem;
+}
+
+.fashion-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.fashion-nr span{
+    position: absolute;
+    top: 3%;
+    right: 35%;
+    font-size: 7rem;
+    opacity: 0.7;
+}
+
+
