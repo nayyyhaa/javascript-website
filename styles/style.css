@@ -34,6 +34,12 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+
+main {
+    position: absolute;
+    width: 100%;
+}
+
 /*header*/
 
 .nav-header {
