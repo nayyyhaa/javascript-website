@@ -240,9 +240,15 @@ body {
     margin: 3rem auto 0;
 }
 
-.fashion-img img{
+.fashion-img{
     height: 80vh;
     flex-basis: 30rem;
+}
+
+.fashion-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .fashion-text {
@@ -252,16 +258,25 @@ body {
 }
 
 .fashion-text h1 {
-    font-size: 3rem;
+    font-family: 'Vibes',
+    sans-serif;
+    font-size: 5rem;
     font-weight: 700;
+    padding: 5rem 0;
+}
+
+.fashion-text p {
+    font-size: 1.5rem;
+    margin-bottom: 7rem;
 }
 
 .fashion-nr span{
     position: absolute;
     top: 3%;
-    right: 35%;
+    right: 37%;
     font-size: 7rem;
-    opacity: 0.7;
+    opacity: 0.5;
+    text-shadow: 1px 1px 3px black;
 }
 
 
