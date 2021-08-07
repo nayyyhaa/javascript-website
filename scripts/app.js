@@ -1,7 +1,8 @@
 let controller;
 let slideScene;
 let pageScene;
-let cursor = document.querySelector(".cursor");
+const cursor = document.querySelector(".cursor");
+const burger = document.querySelector(".burger");
 
 function animateScroll() {
 
@@ -66,12 +67,12 @@ function animateScroll() {
 
 /*cursor animation*/ 
 
-function cursorAnimation(e){
+function cursorAnimation(e) {
     cursor.style.left = e.pageX + "px";
     cursor.style.top = e.pageY + "px";
 }
 
-function activeAnimation(e){
+function activeAnimation(e) {
     const item = e.target;
     console.log(item.id)
     if(item.id === "logo" || item.classList.contains("burger")) cursor.classList.add("active-nav");
@@ -85,10 +86,27 @@ function activeAnimation(e){
         cursor.classList.remove("active-explore");
         gsap.to(".title-swipe",1,{y:"100%"});
     }
-    
 }
+
+function animateBurger(e) {
+    if(!e.target.classList.contains("active")) {
+        e.target.classList.add("active");
+        gsap.to(".line1", 0.5, {rotate: "45", y: 5, background: "black"});
+        gsap.to(".line2", 0.5, {rotate: "-45", y: -5, background: "black"});
+        gsap.to("#logo", 0.5, {color: "black"});
+        gsap.to(".nav-bar", 0.5, {clipPath: "circle(2500px at 100% -10%)"});
+    } else {
+        e.target.classList.remove("active");
+        gsap.to(".line1", 0.5, {rotate: "0", y: 0, background: "white"});
+        gsap.to(".line2", 0.5, {rotate: "0", y: 0, background: "white"});
+        gsap.to("#logo", 0.5, {color: "white"});
+        gsap.to(".nav-bar", 0.5, {clipPath: "circle(2rem at 100% -10%)"});
+    }
+}
+
 
 document.addEventListener('mousemove',cursorAnimation);
 document.addEventListener('mouseover',activeAnimation);
+burger.addEventListener('click', (e) => animateBurger(e));
 
 animateScroll();
