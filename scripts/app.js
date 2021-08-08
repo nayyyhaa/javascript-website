@@ -40,7 +40,7 @@ function animateScroll() {
             reverse: false
         })
         .setTween(slideT1)
-        .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'slide'})
+        // .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'slide'})
         .addTo(controller);
 
         /*new animation*/  
@@ -59,7 +59,7 @@ function animateScroll() {
         })
         .setTween(pageT1)
         .setPin(slide, {pushFollowers: false}) //trigger hit start page, it made it stuck there
-        .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'page', indent: 200})
+        // .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'page', indent: 200})
         .addTo(controller);
 
     })

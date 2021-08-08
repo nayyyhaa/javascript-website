@@ -276,13 +276,75 @@ main {
     margin-bottom: 7rem;
 }
 
+.fashion-nr {
+    position: relative;
+}
+
 .fashion-nr span{
     position: absolute;
-    top: 3%;
-    right: 37%;
+    bottom: 33rem;
     font-size: 7rem;
     opacity: 0.5;
     text-shadow: 1px 1px 3px black;
+}
+
+@media screen and (max-width: 800px) {
+
+    /* Nav Links */
+    .nav-bar {
+        padding: 1rem;
+    }
+
+    .nav-links h1 {
+        font-size: 1rem;
+    }
+
+    .nav-links, .connect {
+        flex-basis: auto;
+    }
+
+    /* Home Page */
+
+    .hero-desc h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-desc p {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+    }
+
+    .explore {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    /* Fashion Page */
+    .fashion-slide1,
+    .fashion-slide2,
+    .fashion-slide3 {
+        margin: auto;
+    }
+
+    .fashion-text h1 {
+        font-size: 3rem;
+        padding: 2rem 0;
+    }
+
+    .fashion-text p {
+        font-size: 1rem;
+    }
+
+    .fashion-text p {
+        margin-bottom: 0rem;
+    }
+
+    .fashion-nr span {
+        bottom: 28rem;
+        font-size: 5rem;
+    }
+
 }
 
 
