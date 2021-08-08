@@ -109,6 +109,9 @@ function animateBurger(e) {
 }
 
 /* Barba Transitions */
+
+const logo = document.querySelector("#logo");
+
 barba.init({
     //views: arrays of objs - pages we wanna transition
     views: [
@@ -116,6 +119,8 @@ barba.init({
             namespace: "home",
             beforeEnter() {
                 animateScroll();
+                // dynamic logo update
+                logo.href = './index.html';
             },
             beforeLeave() {
                 slideScene.destroy();
@@ -124,7 +129,10 @@ barba.init({
             }
         },
         {
-            namespace: "fashion"
+            namespace: "fashion",
+            beforeEnter() {
+                logo.href = '../index.html';
+            }
         }
     ],
     transitions: [
