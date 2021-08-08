@@ -47,20 +47,23 @@ function animateScroll() {
         const pageT1 = gsap.timeline();
 
         //select next slide to make current slide stay a bit longer
-        // let nextSlide = slides.length -1 === index ? "end" : slides[index+1];
+        let nextSlide = slides.length -1 === index ? "end" : slides[index+1];
         // pageT1.fromTo(nextSlide, {y:"0%"}, {y:"50%"});
         // pageT1.fromTo(slide, {opacity: 1, scale: 1}, {opacity: 0, scale: 0.1});
         // pageT1.fromTo(nextSlide, {y:"50%"}, {y:"0%"}, "-=0.5");
+        
+        pageT1.fromTo(slide, {opacity: 1}, {opacity: 0});
+        pageT1.fromTo(nextSlide, {opacity: 0}, {opacity: 1}, "-=0.5");
 
-        // pageScene = new ScrollMagic.Scene({
-        //     triggerElement: slide,
-        //     duration: "100%",
-        //     triggerHook: 0
-        // })
-        // .setTween(pageT1)
-        // .setPin(slide, {pushFollowers: false}) //trigger hit start page, it made it stuck there
-        // // .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'page', indent: 200})
-        // .addTo(controller);
+        pageScene = new ScrollMagic.Scene({
+            triggerElement: slide,
+            duration: "100%",
+            triggerHook: 0
+        })
+        .setTween(pageT1)
+        .setPin(slide, {pushFollowers: false}) //trigger hit start page, it made it stuck there
+        // .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'page', indent: 200})
+        .addTo(controller);
 
     })
 }
@@ -108,6 +111,30 @@ function animateBurger(e) {
     }
 }
 
+function detailAnimation () {
+    const controller = new ScrollMagic.Controller();
+    const slides = document.querySelectorAll('.details-section');
+    slides.forEach((slide, index, slides) => {
+        let slideTl = gsap.timeline({ defaults: {duration: 1}});
+        //select next slide to make current slide stay a bit longer
+        let nextSlide = slides.length -1 === index ? "end" : slides[index+1];
+        let nextImg = nextSlide.querySelector("img");
+        slideTl.fromTo(slide, {opacity: 1}, {opacity: 0});
+        slideTl.fromTo(nextImg, {x: "50%"}, {x: "0%"});
+        slideTl.fromTo(nextSlide, {opacity: 0.3}, {opacity: 1}, "-=0.5");
+
+        detailScene = new ScrollMagic.Scene({
+            triggerElement: slide,
+            duration: "100%",
+            triggerHook: 0
+        })
+        .setTween(slideTl)
+        .setPin(slide, {pushFollowers: false}) //trigger hit start page, it made it stuck there
+        // .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'page', indent: 200})
+        .addTo(controller);
+    })
+}
+
 /* Barba Transitions */
 
 const logo = document.querySelector("#logo");
@@ -118,9 +145,9 @@ barba.init({
         {
             namespace: "home",
             beforeEnter() {
-                animateScroll();
                 // dynamic logo update
                 logo.href = './index.html';
+                animateScroll();
             },
             beforeLeave() {
                 slideScene.destroy();
@@ -132,6 +159,11 @@ barba.init({
             namespace: "fashion",
             beforeEnter() {
                 logo.href = '../index.html';
+                detailAnimation();
+            },
+            beforeLeave() {
+                controller.destroy();
+                detailScene.destroy();
             }
         }
     ],
