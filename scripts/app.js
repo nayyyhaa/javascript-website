@@ -48,12 +48,9 @@ function animateScroll() {
 
         //select next slide to make current slide stay a bit longer
         let nextSlide = slides.length -1 === index ? "end" : slides[index+1];
-        // pageT1.fromTo(nextSlide, {y:"0%"}, {y:"50%"});
-        // pageT1.fromTo(slide, {opacity: 1, scale: 1}, {opacity: 0, scale: 0.1});
-        // pageT1.fromTo(nextSlide, {y:"50%"}, {y:"0%"}, "-=0.5");
-        
-        pageT1.fromTo(slide, {opacity: 1}, {opacity: 0});
-        pageT1.fromTo(nextSlide, {opacity: 0}, {opacity: 1}, "-=0.5");
+        pageT1.fromTo(nextSlide, {opacity: 0, y:"0%"}, {opacity: 0.5, y:"50%"});
+        pageT1.fromTo(slide, {opacity: 1, scale: 1}, {opacity: 0, scale: 0.1});
+        pageT1.fromTo(nextSlide, {opacity: 0.5, y:"50%"}, {opacity: 1,y:"0%"}, "-=0.5");
 
         pageScene = new ScrollMagic.Scene({
             triggerElement: slide,
