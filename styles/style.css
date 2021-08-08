@@ -315,6 +315,10 @@ main {
 
 @media screen and (max-width: 800px) {
 
+    body {
+        text-align: center;
+    }
+
     .cursor {
         display: none;
     }
@@ -347,6 +351,9 @@ main {
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
         font-size: 0.75rem;
+        width: 60%;
+        margin: auto;
+        text-align: center;
     }
 
     /* Fashion Page */
