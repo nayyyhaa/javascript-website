@@ -47,20 +47,20 @@ function animateScroll() {
         const pageT1 = gsap.timeline();
 
         //select next slide to make current slide stay a bit longer
-        let nextSlide = slides.length -1 === index ? "end" : slides[index+1];
-        pageT1.fromTo(nextSlide, {y:"0%"}, {y:"50%"});
-        pageT1.fromTo(slide, {opacity: 1, scale: 1}, {opacity: 0, scale: 0.1});
-        pageT1.fromTo(nextSlide, {y:"50%"}, {y:"0%"}, "-=0.5");
+        // let nextSlide = slides.length -1 === index ? "end" : slides[index+1];
+        // pageT1.fromTo(nextSlide, {y:"0%"}, {y:"50%"});
+        // pageT1.fromTo(slide, {opacity: 1, scale: 1}, {opacity: 0, scale: 0.1});
+        // pageT1.fromTo(nextSlide, {y:"50%"}, {y:"0%"}, "-=0.5");
 
-        pageScene = new ScrollMagic.Scene({
-            triggerElement: slide,
-            duration: "100%",
-            triggerHook: 0
-        })
-        .setTween(pageT1)
-        .setPin(slide, {pushFollowers: false}) //trigger hit start page, it made it stuck there
-        // .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'page', indent: 200})
-        .addTo(controller);
+        // pageScene = new ScrollMagic.Scene({
+        //     triggerElement: slide,
+        //     duration: "100%",
+        //     triggerHook: 0
+        // })
+        // .setTween(pageT1)
+        // .setPin(slide, {pushFollowers: false}) //trigger hit start page, it made it stuck there
+        // // .addIndicators({colorStart: 'white', colorTrigger: 'white', name: 'page', indent: 200})
+        // .addTo(controller);
 
     })
 }
